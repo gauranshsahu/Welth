@@ -1,32 +1,33 @@
 import { NativeTabs } from "expo-router/native-tabs";
-import { useColorScheme } from "react-native";
+
+// Mirrors your tailwind.config.js colours (native props can't use className)
+const COLORS = {
+  bar: "#141822",        // brand.surface
+  active: "#2ECC71",     // primary
+  inactive: "#8A8D96",   // brand.text-secondary
+};
 
 export default function TabLayout() {
-  const dark = useColorScheme() === "dark";
-
-  const accent = "#6C5CE7";                      // change to your brand colour
-  const inactive = dark ? "#9CA3AF" : "#6B7280";
-
   return (
     <NativeTabs
       // Icon + label colours (iOS and Android)
-      tintColor={accent}
-      iconColor={{ default: inactive, selected: accent }}
+      tintColor={COLORS.active}
+      iconColor={{ default: COLORS.inactive, selected: COLORS.active }}
       labelStyle={{
-        default: { color: inactive, fontSize: 11 },
-        selected: { color: accent, fontSize: 11, fontWeight: "600" },
+        default: { color: COLORS.inactive, fontSize: 11 },
+        selected: { color: COLORS.active, fontSize: 11, fontWeight: "600" },
       }}
 
-      // Android: tinted bar, pill indicator, ripple
-      backgroundColor={dark ? "#14141C" : "#F7F6FF"}
-      indicatorColor={accent + "26"}
-      rippleColor={accent + "33"}
+      // Android: dark surface bar, soft green pill, green ripple
+      backgroundColor={COLORS.bar}
+      indicatorColor={COLORS.active + "26"}
+      rippleColor={COLORS.active + "33"}
       labelVisibilityMode="labeled"
 
-      // iOS below 26: frosted blur
-      blurEffect={dark ? "systemUltraThinMaterialDark" : "systemUltraThinMaterialLight"}
+      // iOS below 26: dark frosted blur
+      blurEffect="systemUltraThinMaterialDark"
 
-      // iOS 26+: bar shrinks when you scroll down
+      // iOS 26+: bar shrinks when scrolling down
       minimizeBehavior="onScrollDown"
     >
       <NativeTabs.Trigger name="index">
