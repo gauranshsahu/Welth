@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Redirect } from "expo-router";
+import { StyleSheet } from "react-native";
 
 export default function Index() {
-  return (
-    <View style={styles.container}>
-      <Text>hello</Text>
-    </View>
-  );
+
+  <Redirect href="/(auth)/sign-in"/>
 }
 
 const styles = StyleSheet.create({
