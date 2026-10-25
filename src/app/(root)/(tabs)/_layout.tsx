@@ -39,7 +39,7 @@ export default function TabLayout() {
         <NativeTabs.Trigger.Icon sf="list.bullet" md="receipt_long" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="add-transactions">
+      <NativeTabs.Trigger name="add-transaction">
         <NativeTabs.Trigger.Label>Add</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf={{ default: "plus.circle", selected: "plus.circle.fill" }} md="add_circle" />
       </NativeTabs.Trigger>
